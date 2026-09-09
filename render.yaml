@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: nova-api
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install && npm run db:generate && npm run build
+    startCommand: npm run db:push && npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nova-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 4000
+      - key: CLIENT_ORIGIN
+        sync: false
+
+databases:
+  - name: nova-db
+    plan: free
+    databaseName: nova
+    user: nova

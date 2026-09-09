@@ -46,7 +46,7 @@ app.post("/api/auth/login", async (request, response, next) => {
       return;
     }
     const safeUser = { id: user.id, name: user.name, email: user.email, role: user.role };
-    response.json({ user: safeUser, token: createToken(user) });
+    response.json({ user: safeUser, token: createToken(safeUser) });
   } catch (error) {
     next(error);
   }

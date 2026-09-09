@@ -1,0 +1,13 @@
+name: Keep Render API awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render health endpoint
+        run: curl --fail --silent --show-error --max-time 30 https://nova-api-886o.onrender.com/health

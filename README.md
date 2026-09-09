@@ -110,3 +110,14 @@ Backend: `DATABASE_URL`, `JWT_SECRET`, `CLIENT_ORIGIN`, and `PORT`.
 Frontend: `VITE_API_URL`.
 
 Do not commit `.env` files or provider credentials. After deployment, replace the local demo credentials and run the full test checklist against the hosted URLs.
+
+### Free Render keep-awake check
+
+`.github/workflows/keep-render-awake.yml` pings the public Render health endpoint every 10 minutes using free GitHub Actions. After pushing this file:
+
+1. Open the repository on GitHub.
+2. Open **Actions** and select **Keep Render API awake**.
+3. Enable workflows if GitHub asks.
+4. Run it once with **Run workflow** to verify the endpoint.
+
+Scheduled GitHub Actions can occasionally be delayed, so this reduces Render sleeping but cannot guarantee zero cold starts on the free plan.

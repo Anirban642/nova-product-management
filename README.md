@@ -22,7 +22,7 @@ Phase 1 of NOVA, a team productivity platform: **Plan. Collaborate. Deliver.**
 3. Install packages: `npm install`
 4. Generate the Prisma client: `npm run db:generate`
 5. Create/update the database schema: `npm run db:push`
-6. Load demo data: `npm run db:seed`
+7. Load demo data: `npm run db:seed`. The Render start command also runs the idempotent seed script, which creates the local demo accounts.
 7. Start development mode: `npm run dev`
 
 The API listens on `http://localhost:4000` by default.
